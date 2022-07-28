@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Example</title>
+  <script>
+    function addMember() {
+      let newMember = document.getElementsByTagName("input"); // Берём данные newMember
+      let div = document.createElement("div"); // Создаём новый div
+      document.body.append(div); // Добавляем div в DOM
+      document.body.insertBefore(div,newMember); // Добавляем в div - newMember
+    }
+  </script>
+  <style>
+    div{
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+<div>Регистрация участников:</div>
+<input style=" width: 400px; height: 24px;" id="inp">
+<button style="font-size: 20px;"onclick="addMember()">Добавить участника</button>
+</body>
+</html>

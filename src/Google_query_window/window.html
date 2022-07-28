@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search</title>
+</head>
+<body>
+<iframe id="iframe" src="" style="height:800px; width:800px;"></iframe>
+<br>
+<br>
+<input id="search" placeholder="Searching Google" type="text" size="40">
+<button id="button_google"  onclick="start()">Input</button>
+<script>
+    document.getElementById("button_google").onclick = function start() {
+        let inquiry = document.getElementById("search").value;
+        document.getElementById("iframe").setAttribute("src", 'https://www.google.com/search?igu=1'+`&q=${inquiry}` );
+    }
+</script>
+</body>
+</html>

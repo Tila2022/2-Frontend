@@ -1,0 +1,51 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <style>
+        #table td {background: white; color: black}
+        #table td.act {background: black; color: white}
+    </style>
+    <script>
+        function myFunc (data) { // В одних браузерах сработает в других нет
+            let event = window.event || data, // Если event не передался, пользуем window.event
+                obj = event.srcElement || event.target; // Синтаксис для двух групп браузеров
+            if (obj.tagName == "table") return; // Клик по бордеру или по межъячеечному пространству
+            while (obj.tagName != 'TD') obj = obj.parentNode; // Выбираем TD
+            obj.className = obj.className ? '' : 'act'; // Меняем #table td на #table td.act
+        }
+        onload = function () {
+            let tableId = document.getElementById ('table');
+            if (document.addEventListener) tableId.addEventListener ('click', myFunc); // Назначения функции для одних браузеров
+// else if (document.attachEvent) tableId.attachEvent ('onclick', myFunc); // для других
+// else tableId.onclick = myFunc; // для третьих
+        }
+    </script>
+</head>
+<body>
+<table id="table" border="3px" width="100%">
+    <tr>
+        <th>Абитуриент</th>
+        <th>Математика</th>
+        <th>Русский язык</th>
+        <th>Информатика</th>
+        <th>Дополнительные баллы</th>
+    </tr>
+    <tr>
+        <td>Иванов И.И.</td>
+        <td>85</td>
+        <td>73</td>
+        <td>78</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>Петров П.П.</td>
+        <td>66</td>
+        <td>89</td>
+        <td>66</td>
+        <td>3</td>
+    </tr>
+</table>
+</body>
+</html>
